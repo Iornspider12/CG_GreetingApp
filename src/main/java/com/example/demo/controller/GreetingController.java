@@ -6,8 +6,6 @@ import com.example.demo.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/greetings")
 public class GreetingController {
@@ -39,4 +37,10 @@ public class GreetingController {
     public Greeting getCustomGreeting(@RequestParam(required = false) String firstName,
                                       @RequestParam(required = false) String lastName) {
         return greetingService.getPersonalizedGreeting(firstName, lastName);
-    }}
+    }
+
+    @PostMapping("/save")
+    public Greeting saveGreeting(@RequestBody Greeting greeting) {
+        return greetingService.save(greeting);
+    }   
+}
