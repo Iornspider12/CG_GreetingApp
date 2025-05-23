@@ -58,4 +58,12 @@ public class GreetingService {
         return greetingRepository.findAll();
     }
 
+    public Greeting update(long id, Greeting greeting) {
+        if (!greetingRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Greeting not found");
+        }
+        greeting.setId(id);
+        return greetingRepository.save(greeting);
+    }
+
 }
