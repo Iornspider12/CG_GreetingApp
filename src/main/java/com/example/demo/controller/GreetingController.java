@@ -42,5 +42,10 @@ public class GreetingController {
     @PostMapping("/save")
     public Greeting saveGreeting(@RequestBody Greeting greeting) {
         return greetingService.save(greeting);
-    }   
+    }
+
+    @GetMapping("/{id}")
+    public Greeting getGreetingById(@PathVariable long id) {
+        return greetingService.findById(id);
+    }
 }
